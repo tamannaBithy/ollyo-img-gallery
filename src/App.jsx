@@ -1,13 +1,12 @@
-import "./App.css";
 import Header from "./components/Header";
-import ImgGrid from "./components/ImgGrid";
+import ImgLayout from "./components/ImgLayout";
 
 function App() {
   return (
-    <>
+    <div className="wrapper space-y-8">
       <Header />
-      <ImgGrid />
-    </>
+      <ImgLayout />
+    </div>
   );
 }
 

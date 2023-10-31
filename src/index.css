@@ -5,3 +5,19 @@
 html {
   @apply font-sans;
 }
+
+.testb {
+  @apply border border-black;
+}
+
+.testc {
+  @apply bg-red-400;
+}
+
+.wrapper {
+  @apply container max-w-[3000px] mx-auto;
+}
+
+.child-wrapper {
+  @apply mx-auto px-10;
+}
