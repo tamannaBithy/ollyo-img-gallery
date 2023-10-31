@@ -1,0 +1,10 @@
+.checkbox-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1; /* Ensure the checkbox appears on top of the image */
+}
+
+.image-border {
+  @apply border rounded-md border-gray-300 p-1;
+}
