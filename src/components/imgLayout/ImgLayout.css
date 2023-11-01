@@ -15,5 +15,5 @@
 }
 
 .img-transition {
-  @apply bg-white hover:brightness-50 transition delay-600 ease-linear cursor-pointer;
+  @apply bg-white hover:brightness-50 transition delay-300 ease-linear  cursor-pointer;
 }

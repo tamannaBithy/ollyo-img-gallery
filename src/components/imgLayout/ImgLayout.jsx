@@ -1,8 +1,16 @@
 import { useState } from "react";
 import imgData from "../../utils/imgData.json";
 import "./ImgLayout.css";
+import { closestCenter, DndContext } from "@dnd-kit/core";
+import {
+  arrayMove,
+  rectSortingStrategy,
+  SortableContext,
+} from "@dnd-kit/sortable";
+import SortableImg from "./SortableImg";
 
 const ImgLayout = () => {
+  const [images, setImages] = useState(imgData);
   const [selectedImages, setSelectedImages] = useState([]);
   const [hoveredImage, setHoveredImage] = useState(null);
 
@@ -17,39 +25,35 @@ const ImgLayout = () => {
     }
   };
 
+  const onDragEnd = (event) => {
+    const { active, over } = event;
+    if (active.id === over.id) {
+      return;
+    }
+    setImages((images) => {
+      const oldIndex = images.findIndex((img) => img?.id === active.id);
+      const newIndex = images.findIndex((img) => img?.id === over.id);
+      return arrayMove(images, oldIndex, newIndex);
+    });
+  };
+
   return (
-    <div className=" grid lg:grid-cols-5 grid-cols-3 grid-flow-row gap-8 child-wrapper pb-10">
-      {imgData?.map(({ id, imgSrc }) => {
-        const isSelected = selectedImages.includes(id);
-        const isHovered = hoveredImage === id;
-
-        return (
-          <div
-            key={id}
-            className={`relative image-border ${
-              id === 1 ? "row-span-2 col-span-2" : "col-span-1"
-            }`}
-            onClick={() => toggleSelection(id)}
-            onMouseEnter={() => setHoveredImage(id)}
-            onMouseLeave={() => setHoveredImage(null)}
-          >
-            <div className="img-transition">
-              <img src={imgSrc} alt="gallery" />
-            </div>
-
-            {(isSelected || isHovered) && (
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={isSelected}
-                  onChange={() => toggleSelection(id)}
-                />
-              </label>
-            )}
-          </div>
-        );
-      })}
-    </div>
+    <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+      <SortableContext items={images} strategy={rectSortingStrategy}>
+        <div className="grid lg:grid-cols-5 grid-cols-3 grid-flow-row gap-8 child-wrapper pb-10">
+          {images.map((img) => (
+            <SortableImg
+              key={img?.id}
+              img={img}
+              selectedImages={selectedImages}
+              hoveredImage={hoveredImage}
+              setHoveredImage={setHoveredImage}
+              toggleSelection={toggleSelection}
+            />
+          ))}
+        </div>
+      </SortableContext>
+    </DndContext>
   );
 };
 
