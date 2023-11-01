@@ -7,7 +7,7 @@ const ImgLayout = () => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [hoveredImage, setHoveredImage] = useState(null);
 
-  console.log(hoveredImage);
+  console.log(selectedImages);
 
   // Function to toggle the selection of an image
   const toggleSelection = (id) => {
@@ -21,8 +21,8 @@ const ImgLayout = () => {
   };
 
   return (
-    <div className="grid grid-cols-5 grid-flow-row gap-8 child-wrapper pb-10">
-      <div className="row-span-2 col-span-2 image-border">
+    <div className="grid lg:grid-cols-5 grid-cols-3 grid-flow-row gap-8 child-wrapper pb-10">
+      <div className="row-span-2 col-span-2 image-border hover:brightness-50">
         <img src={featureImg} alt="featureImage" />
       </div>
 
@@ -40,9 +40,9 @@ const ImgLayout = () => {
               onMouseEnter={() => setHoveredImage(id)}
               onMouseLeave={() => setHoveredImage(null)}
             >
-              <img src={imgSrc} alt="gallery" />
+              <img src={imgSrc} alt="gallery" className="hover:brightness-50" />
 
-              {isHovered && (
+              {(isSelected || isHovered) && (
                 <label className="checkbox-label">
                   <input
                     type="checkbox"
