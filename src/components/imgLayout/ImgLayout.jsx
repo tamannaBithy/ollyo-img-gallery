@@ -33,7 +33,9 @@ const ImgLayout = () => {
             onMouseEnter={() => setHoveredImage(id)}
             onMouseLeave={() => setHoveredImage(null)}
           >
-            <img src={imgSrc} alt="gallery" className="hover:brightness-50" />
+            <div className="img-transition">
+              <img src={imgSrc} alt="gallery" />
+            </div>
 
             {(isSelected || isHovered) && (
               <label className="checkbox-label">

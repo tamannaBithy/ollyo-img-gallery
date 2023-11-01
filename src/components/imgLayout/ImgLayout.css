@@ -6,10 +6,14 @@
 }
 
 .checkbox-label input[type="checkbox"] {
-  width: 20px; /* Adjust the width to your desired size */
-  height: 20px; /* Adjust the height to your desired size */
+  width: 20px;
+  height: 20px;
 }
 
 .image-border {
   @apply border rounded-md border-gray-300 p-1;
+}
+
+.img-transition {
+  @apply bg-white hover:brightness-50 transition delay-600 ease-linear cursor-pointer;
 }
