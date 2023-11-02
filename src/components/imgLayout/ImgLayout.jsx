@@ -30,10 +30,11 @@ const ImgLayout = () => {
     <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
       <SortableContext items={images} strategy={rectSortingStrategy}>
         <div className="grid lg:grid-cols-5 grid-cols-3 grid-flow-row gap-8 child-wrapper pb-10">
-          {images?.map((img) => (
+          {images?.map((img, index) => (
             <SortableImg
               key={img?.id}
               img={img}
+              index={index}
               selectedImages={selectedImages}
               hoveredImage={hoveredImage}
               setHoveredImage={setHoveredImage}

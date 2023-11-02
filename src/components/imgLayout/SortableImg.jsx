@@ -9,6 +9,7 @@ const SortableImg = ({
   hoveredImage,
   setHoveredImage,
   toggleSelection,
+  index,
 }) => {
   const { id, imgSrc } = img;
 
@@ -38,7 +39,7 @@ const SortableImg = ({
         style={style}
         {...attributes}
         className={`relative ${
-          id === 1 ? "row-span-2 col-span-2" : "col-span-1"
+          index === 0 ? "row-span-2 col-span-2" : "col-span-1"
         }`}
         onClick={handleMouseDown}
         onMouseEnter={() => setHoveredImage(id)}
