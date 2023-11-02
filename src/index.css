@@ -17,7 +17,3 @@ html {
 .wrapper {
   @apply container max-w-[3000px] mx-auto;
 }
-
-.child-wrapper {
-  @apply mx-auto px-10;
-}

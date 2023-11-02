@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import "./ImgLayout.css";
 
 const SortableImg = ({
   img,
@@ -23,12 +22,10 @@ const SortableImg = ({
     transform: CSS.Transform.toString(transform),
   };
 
-  const handleMouseDown = (event) => {
-    if (!event.defaultPrevented) {
-      // Check if the click target is the checkbox element
-      if (event.target.tagName === "INPUT") {
-        toggleSelection(id);
-      }
+  const handleClick = (event) => {
+    // Check if the click target is the checkbox element
+    if (event.target.tagName === "INPUT") {
+      toggleSelection(id);
     }
   };
 
@@ -40,24 +37,29 @@ const SortableImg = ({
         {...attributes}
         className={`relative ${
           index === 0 ? "row-span-2 col-span-2" : "col-span-1"
-        }`}
-        onClick={handleMouseDown}
+        } rounded-xl`}
+        onClick={handleClick}
         onMouseEnter={() => setHoveredImage(id)}
         onMouseLeave={() => setHoveredImage(null)}
       >
-        <div className="image-border img-transition" {...listeners}>
-          <img src={imgSrc} alt="gallery" />
-        </div>
-
         {(isSelected || isHovered) && (
-          <label className="checkbox-label ">
+          <label className="checkbox">
             <input
+              className="opacity-100 cursor-pointer absolute z-10 md:w-6 md:h-6 m-2 md:m-4"
               type="checkbox"
               checked={isSelected}
               onChange={() => toggleSelection(id)}
             />
           </label>
         )}
+        <div
+          className={`border rounded-xl border-gray-300 bg-white hover:brightness-50 transition ease-in-out cursor-pointer ${
+            isSelected && `opacity-60`
+          }`}
+          {...listeners}
+        >
+          <img className="rounded-xl" src={imgSrc} alt="gallery" />
+        </div>
       </div>
     </>
   );

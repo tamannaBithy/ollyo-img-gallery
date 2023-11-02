@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import imgData from "../utils/imgData.json";
-import "./imgLayout/ImgLayout.css";
 
 import { closestCenter, DndContext } from "@dnd-kit/core";
 import {

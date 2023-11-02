@@ -10,8 +10,8 @@ const Header = () => {
   };
 
   return (
-    <div className="child-wrapper border-b">
-      <div className="flex justify-between items-center p-5 ">
+    <div className="mx-auto px-6 border-b">
+      <div className="flex justify-between items-center p-5">
         <p className="font-bold lg:text-xl text-lg">
           {selectedImages.length > 0
             ? `${selectedImages.length} Files Selected`
