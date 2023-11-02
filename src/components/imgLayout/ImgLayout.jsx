@@ -1,5 +1,4 @@
 import { useState } from "react";
-import imgData from "../../utils/imgData.json";
 import "./ImgLayout.css";
 import { closestCenter, DndContext } from "@dnd-kit/core";
 import {
@@ -8,22 +7,12 @@ import {
   SortableContext,
 } from "@dnd-kit/sortable";
 import SortableImg from "./SortableImg";
+import { useSelection } from "../../context/SelectionContext";
 
 const ImgLayout = () => {
-  const [images, setImages] = useState(imgData);
-  const [selectedImages, setSelectedImages] = useState([]);
-  const [hoveredImage, setHoveredImage] = useState(null);
+  const { images, setImages, selectedImages, toggleSelection } = useSelection();
 
-  // Function to toggle the selection of an image
-  const toggleSelection = (id) => {
-    if (selectedImages.includes(id)) {
-      setSelectedImages(
-        selectedImages.filter((selectedId) => selectedId !== id)
-      );
-    } else {
-      setSelectedImages([...selectedImages, id]);
-    }
-  };
+  const [hoveredImage, setHoveredImage] = useState(null);
 
   const onDragEnd = (event) => {
     const { active, over } = event;
@@ -41,7 +30,7 @@ const ImgLayout = () => {
     <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
       <SortableContext items={images} strategy={rectSortingStrategy}>
         <div className="grid lg:grid-cols-5 grid-cols-3 grid-flow-row gap-8 child-wrapper pb-10">
-          {images.map((img) => (
+          {images?.map((img) => (
             <SortableImg
               key={img?.id}
               img={img}
