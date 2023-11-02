@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <div className="mx-auto px-6 border-b">
+    <div className="mx-auto md:px-6 px-3 border-b">
       <div className="flex justify-between items-center p-5">
         <p className="font-bold lg:text-xl text-lg">
           {selectedImages.length > 0
