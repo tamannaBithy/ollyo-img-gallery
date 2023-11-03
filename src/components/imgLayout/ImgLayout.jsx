@@ -8,6 +8,7 @@ import {
 import SortableImg from "./SortableImg";
 import { useSelection } from "../../context/SelectionContext";
 import { FaRegImage } from "react-icons/fa6";
+import SortableImgs from "../Test";
 
 const ImgLayout = () => {
   const { images, setImages, selectedImages, toggleSelection } = useSelection();

@@ -20,6 +20,7 @@ const SortableImg = ({
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
+    touchAction: "manipulation",
   };
 
   const handleClick = (event) => {
