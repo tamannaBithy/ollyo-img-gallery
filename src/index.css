@@ -19,5 +19,5 @@ html {
 }
 
 .img-touch {
-  touch-action: manipulation;
+  touch-action: none;
 }
