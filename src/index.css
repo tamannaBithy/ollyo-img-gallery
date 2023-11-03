@@ -17,3 +17,7 @@ html {
 .wrapper {
   @apply container max-w-[3000px] mx-auto;
 }
+
+.img-touch {
+  touch-action: manipulation;
+}

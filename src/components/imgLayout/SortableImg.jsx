@@ -20,7 +20,6 @@ const SortableImg = ({
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
-    touchAction: "manipulation",
   };
 
   const handleClick = (event) => {
@@ -54,7 +53,7 @@ const SortableImg = ({
           </label>
         )}
         <div
-          className={`border rounded-xl border-gray-300 bg-white hover:brightness-50 transition ease-in-out cursor-pointer ${
+          className={`border img-touch rounded-xl border-gray-300 bg-white hover:brightness-50 transition ease-in-out cursor-pointer ${
             isSelected && `opacity-60`
           }`}
           {...listeners}
