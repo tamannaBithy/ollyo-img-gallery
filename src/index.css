@@ -6,6 +6,7 @@ html {
   @apply font-sans;
 }
 
+/* testb & testc classes help in visually assessing the styling of elements during the development and testing phases */
 .testb {
   @apply border border-black;
 }

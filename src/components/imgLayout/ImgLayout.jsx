@@ -7,8 +7,7 @@ import {
 } from "@dnd-kit/sortable";
 import SortableImg from "./SortableImg";
 import { useSelection } from "../../context/SelectionContext";
-import { FaRegImage } from "react-icons/fa6";
-import SortableImgs from "../Test";
+import viewImg from "/view.svg";
 
 const ImgLayout = () => {
   const { images, setImages, selectedImages, toggleSelection } = useSelection();
@@ -46,7 +45,7 @@ const ImgLayout = () => {
           <div className="border-dashed border-2 border-gray-300 rounded-xl flex items-center bg-gray-50">
             <div className="mx-auto md:space-y-6 space-y-2">
               <div className="px-8 lg:text-3xl text-xl">
-                <FaRegImage />
+                <img src={viewImg} alt="view" />
               </div>
               <p className="font-semibold md:text-lg text-sm px-1 md:px-0">
                 Add Images
