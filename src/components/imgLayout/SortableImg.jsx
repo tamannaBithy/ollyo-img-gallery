@@ -58,7 +58,11 @@ const SortableImg = ({
           }`}
           {...listeners}
         >
-          <img className="rounded-xl" src={imgSrc} alt="gallery" />
+          <img
+            className="rounded-xl max-w-full h-auto"
+            src={imgSrc}
+            alt="gallery"
+          />
         </div>
       </div>
     </>
