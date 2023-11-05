@@ -5,7 +5,7 @@ import { SelectionProvider } from "./context/SelectionContext";
 function App() {
   return (
     <SelectionProvider>
-      <div className="wrapper space-y-8">
+      <div className="wrapper">
         <Header />
         <ImgLayout />
       </div>

@@ -53,15 +53,15 @@ const SortableImg = ({
           </label>
         )}
         <div
-          className={`border img-touch rounded-xl border-gray-300 bg-white hover:brightness-50 transition ease-in-out cursor-pointer ${
-            isSelected && `opacity-60`
-          }`}
+          className={`border w-full img-touch rounded-xl border-gray-300 bg-white hover:brightness-50 transition ease-in-out cursor-pointer ${
+            isSelected && "opacity-60"
+          } ${index === 0 ? "h-full" : "h-[130px] md:h-[200px] lg:h-[260px]"}`}
           {...listeners}
         >
           <img
-            className="rounded-xl max-w-full h-auto"
+            className="h-full w-full object-fill rounded-xl"
             src={imgSrc}
-            alt="gallery"
+            alt="picture"
           />
         </div>
       </div>

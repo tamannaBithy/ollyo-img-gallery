@@ -7,7 +7,7 @@ import {
 } from "@dnd-kit/sortable";
 import SortableImg from "./SortableImg";
 import { useSelection } from "../../context/SelectionContext";
-import viewImg from "/view.svg";
+import AddImg from "./AddImg";
 
 const ImgLayout = () => {
   const { images, setImages, selectedImages, toggleSelection } = useSelection();
@@ -29,7 +29,7 @@ const ImgLayout = () => {
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
       <SortableContext items={images} strategy={rectSortingStrategy}>
-        <div className="grid lg:grid-cols-5 grid-cols-3 gap-2 md:gap-8 p-2 md:p-8">
+        <div className="grid lg:grid-cols-5 grid-cols-3 gap-2 md:gap-8 py-4 px-2 md:p-8">
           {images?.map((img, index) => (
             <SortableImg
               key={img?.id}
@@ -42,16 +42,8 @@ const ImgLayout = () => {
             />
           ))}
 
-          <div className="border-dashed border-2 border-gray-300 rounded-xl flex items-center bg-gray-50">
-            <div className="mx-auto md:space-y-6 space-y-2">
-              <div className="px-8 lg:text-3xl text-xl">
-                <img src={viewImg} alt="view" />
-              </div>
-              <p className="font-semibold md:text-lg text-sm px-1 md:px-0">
-                Add Images
-              </p>
-            </div>
-          </div>
+          {/* adding new img feature */}
+          <AddImg />
         </div>
       </SortableContext>
     </DndContext>

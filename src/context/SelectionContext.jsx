@@ -13,6 +13,7 @@ export function SelectionProvider({ children }) {
   const [images, setImages] = useState(imgData);
   const [selectedImages, setSelectedImages] = useState([]);
 
+  //for select img
   const toggleSelection = (id) => {
     if (selectedImages.includes(id)) {
       setSelectedImages(
@@ -23,6 +24,7 @@ export function SelectionProvider({ children }) {
     }
   };
 
+  //for delete img
   const deleteSelectedImages = () => {
     const updatedImages = images?.filter(
       (image) => !selectedImages.includes(image.id)
@@ -30,6 +32,25 @@ export function SelectionProvider({ children }) {
     setImages(updatedImages);
 
     setSelectedImages([]);
+  };
+
+  //for img upload
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        const newImage = {
+          id: images.length + 1,
+          imgSrc: e.target.result,
+        };
+
+        setImages([...images, newImage]);
+      };
+
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -40,6 +61,7 @@ export function SelectionProvider({ children }) {
         selectedImages,
         toggleSelection,
         deleteSelectedImages,
+        handleImageUpload,
       }}
     >
       {children}
